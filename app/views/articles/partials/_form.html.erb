@@ -1,0 +1,47 @@
+<%= form_with model: article do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+</br>
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+</br>
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+</br>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+</br>
+<div>
+
+  <% unless article.errors.full_messages_for(:title).length.zero? %>
+    <% article.errors.full_messages_for(:title).each do |message|  %>
+      <div> <%= message %> </div>
+    <% end %>
+  <% end %>
+    
+  <% unless article.errors.full_messages_for(:body).length.zero? %>
+    <% article.errors.full_messages_for(:body).each do |message|  %>
+      <div> <%= message %> </div>
+    <% end %>
+  <% end %>
+
+  <% unless article.errors.full_messages_for(:image).length.zero? %>
+    <% article.errors.full_messages_for(:image).each do |message|  %>
+      <div> <%= message %> </div>
+    <% end %>
+  <% end %>
+</div>
+
+</br>
+<%= link_to "List of Blogs", articles_path %>

@@ -1,0 +1,52 @@
+<main>
+
+  <div>
+    <% begin %>
+      <%= image_tag @article.image, class: "blog-image" %>
+    <% rescue %>
+      <h4>No Image</h4>
+    <% end %>
+    <h3><%= @article.title %></h3>
+    <p><%= @article.body %></p>
+    <ul>
+      <li> <%= link_to "Edit", edit_article_path(@article) %> </li>
+      <li> 
+        <%= 
+          link_to "Delete", 
+          article_path(@article),
+          data: {
+            turbo_method: :delete,
+            turbo_confirm: 'Are you sure',
+          }
+        %> 
+      </li> 
+    </ul>
+  </div>
+
+  <%= render 'articles/partials/comment', comments: @article.comments  %>
+
+  <div>
+    <h3>Add Comments:</h3>
+
+    <%= form_with model: [@article, @article.comments.build]  do  |form| %>
+      <p>
+        <%= form.label :commenter %> <br>
+        <%= form.text_field :commenter %> <br>
+      </p>
+
+      <p>
+        <%= form.label :body%> <br>
+        <%= form.text_area :body %> <br>
+      </p>
+
+      <p>
+        <%= form.submit %>
+      </p>
+
+    <% end %>
+  </div>
+
+</main>
+
+<br>
+<%= link_to "List of Blogs", articles_path %>

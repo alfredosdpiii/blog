@@ -1,0 +1,24 @@
+given: id, create_at, updated_at
+
+Article
+  title:  string
+    validation
+      string
+      character should greater than 3 but less than 20
+      not nil
+      unique
+  body:   text
+    validation
+      text
+      character should greater than 3 but less than 140
+      not nil
+  like:   string
+    validation
+      integer
+  image:  string
+    validation
+      string
+      must end match a file extension (png|jpg|gif)
+
+Account
+  ...

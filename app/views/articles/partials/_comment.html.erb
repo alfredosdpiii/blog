@@ -1,0 +1,11 @@
+  <div>
+    <h3>Comments</h3>
+    <% comments.each do |comment| %>
+      <p>
+        <span> <%= comment.commenter %> </span> -
+        <span> <%= comment.body %> </span>
+      </p>
+    <% end %>
+  </div>
+
+  <div>
